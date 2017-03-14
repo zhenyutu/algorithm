@@ -1,4 +1,4 @@
-package cn.tzy.app.dataStructure.list;
+package cn.tzy.app.dataStructure.chapter3;
 
 /**
  * Created by tuzhenyu on 17-3-14.
@@ -20,7 +20,7 @@ public class SequenceList<E> implements List<E>{
     }
 
     @Override
-    public void insert(E e) throws Exception{
+    public void add(E e) throws Exception{
         if (size >= maxSize)
             throw new Exception("数据溢出");
         list[size] = e;

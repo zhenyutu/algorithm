@@ -1,11 +1,7 @@
-package cn.tzy.app.dataStructure.list;
+package cn.tzy.app.dataStructure.chapter3;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by tuzhenyu on 17-3-14.
@@ -20,13 +16,13 @@ public class SequenceListTest {
         list1 = new SequenceList<Integer>();
         int [] v= {1,2,3,9,5,8};
         for(int i:v) {
-            list1.insert(i);
+            list1.add(i);
         }
 
         list2 = new SequenceList<String>();
         String [] strs = {"hello","nice","nee you","mei guo"};
         for(String s:strs) {
-            list2.insert(s);
+            list2.add(s);
         }
     }
     @Test
@@ -38,6 +34,7 @@ public class SequenceListTest {
             System.out.print(list2.get(i)+" ");
         }
 
+        list1.insert(2,7);
         list1.insert(2,7);
         list2.delete(2);
         System.out.println("");
