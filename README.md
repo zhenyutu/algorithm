@@ -1,1 +1,8 @@
-# cn.tzy.app.algorithm
+# 算法学习
+- 大话数据结构
+- 算法(第四版)
+- leetcode
+- 牛客网
+- 剑指offer
+- 编程之美
+- 程序员面试金典
