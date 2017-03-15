@@ -26,6 +26,7 @@ public class CycleLinkList<E>{
         Node header = new Node(null);
         this.head = header;
         this.current=header;
+        this.head.next = this.head;
     }
 
     public void add(E e){
@@ -38,42 +39,41 @@ public class CycleLinkList<E>{
     public void insert(int index,E e)throws Exception{
         if (index<0||index>size)
             throw new Exception("索引错误");
-        Node cur = head.next;
+        Node cur = head;
         for (int i=0;i<index;i++){
-            cur = current.next;
+            cur = cur.next;
         }
         Node tmpNode = cur.next;
         cur.next=new Node(e);
-        current.next.next = tmpNode;
+        cur.next.next = tmpNode;
         size++;
     }
 
     public void delete(int index)throws Exception{
         if (index<0||index>size)
             throw new Exception("索引错误");
-        Node current = first;
-        for (int i=0;i<size-1-index;i++){
-            current = current.next;
-            System.out.println(current.getElement());
+        Node cur = head;
+        for (int i=0;i<index;i++){
+            cur = cur.next;
         }
-        current.next = current.next.next;
+        cur.next = cur.next.next;
         size--;
     }
 
     public Node get(int index)throws Exception{
         if (index<0||index>size)
             throw new Exception("索引错误");
-        Node current = first;
+        Node cur = head.next;
         for (int i=0;i<index;i++){
-            current = current.next;
+            cur = cur.next;
         }
-        return current;
+        return cur;
     }
 
     public int length(){
         return size;
     }
     public boolean isEmpty(){
-        return first==null;
+        return this.current==this.head;
     }
 }
