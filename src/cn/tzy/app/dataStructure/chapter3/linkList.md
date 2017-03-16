@@ -13,3 +13,7 @@
 - 单链表插入和删除一个元素的时间复杂度为O(1)
 - 单链表读取一个元素的时间复杂度为O(n)
 - 实现文件：SingleLinkList.java  
+### java集合类
+- java集合类的List继承自Collection接口
+- List接口的实现类主要有ArrayList,LinkedList和Vector
+- ArrayList和Vector是数组实现的，LinkedList是链表实现的

@@ -8,4 +8,9 @@
 - 队列先进先出的特性需要将新进的数据放在尾部
 - 队列先进后出的特性可以使用带有头部节点的链式数据结构，front一直指向最先进入的数据，
 rear指向新进的数据，并不行后移
- 
+### JAVA集合类
+- java集合类Stack栈继承自Vector类，是一种较为古老的实现类，性能较差
+- java一般使用双端队列ArrayDeque来实现栈的功能
+- java的Queue接口继承自Collection，实现类有PriorityQueue优先队列,
+可以通过修改comparable实现自定义优先形式
+- Deque双端队列接口实现自接口Queue,实现类ArrayDeque可以用来做双端队列，栈等

@@ -3,6 +3,8 @@ package cn.tzy.app.dataStructure.chapter4;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.*;
+
 /**
  * Created by tuzhenyu on 17-3-16.
  * @author tuzhenyu
