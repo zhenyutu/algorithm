@@ -5,9 +5,9 @@ package cn.tzy.app.dataStructure.chapter4;
  * @author tuzhenyu
  */
 public interface Stack<E> {
-    public void push(E e);
-    public E pop();
+    public void push(E e)throws Exception;
+    public E pop()throws Exception;
     public int length();
-    public E getTop();
+    public E getTop()throws Exception;
     public boolean isEmpty();
 }

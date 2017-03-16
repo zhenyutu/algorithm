@@ -4,7 +4,7 @@ package cn.tzy.app.dataStructure.chapter4;
  * Created by tuzhenyu on 17-3-16.
  * @author tuzhenyu
  */
-public class SequenceStack<E> {
+public class SequenceStack<E> implements Stack<E>{
     private static int defultSize = 10;
     private int top;
     private int maxSize;
@@ -21,6 +21,7 @@ public class SequenceStack<E> {
         this.maxSize = defultSize;
     }
 
+    @Override
     public void push(E e)throws Exception{
         if (top > maxSize)
             throw new Exception("数据溢出");
@@ -28,6 +29,7 @@ public class SequenceStack<E> {
         top++;
     }
 
+    @Override
     public E pop()throws Exception{
         if (isEmpty())
             throw new Exception("栈为空");
@@ -37,6 +39,7 @@ public class SequenceStack<E> {
         return temp;
     }
 
+    @Override
     public E getTop()throws Exception{
         if (isEmpty())
             throw new Exception("栈为空");
