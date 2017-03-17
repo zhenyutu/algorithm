@@ -1,9 +1,6 @@
 package cn.tzy.app.dataStructure.chapter6;
 
-import cn.tzy.app.dataStructure.chapter4.LInkQueue;
-
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
