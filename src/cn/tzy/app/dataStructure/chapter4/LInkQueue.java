@@ -24,7 +24,6 @@ public class LInkQueue<E> {
         Node header = new Node(null);
         this.front=header;
         this.rear=header;
-
     }
 
     public void enQueue(E e){
