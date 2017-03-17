@@ -1,5 +1,7 @@
 package cn.tzy.app.dataStructure.chapter6;
 
+import cn.tzy.app.dataStructure.chapter4.LInkQueue;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -66,5 +68,18 @@ public class BinaryTree<E> {
         postOrder(root.leftNode);
         postOrder(root.rightNode);
         System.out.print(root.e+" ");
+    }
+
+    public void BFS(Node root){
+        Queue<Node> nodeList = new LinkedList<>();
+        nodeList.offer(root);
+        while (!nodeList.isEmpty()){
+            Node current = nodeList.poll();
+            System.out.print(current.e+" ");
+            if (current.leftNode != null)
+                nodeList.offer(current.leftNode);
+            if (current.rightNode != null)
+                nodeList.offer(current.rightNode);
+        }
     }
 }

@@ -16,6 +16,8 @@ public class BinaryTreeTest {
         tree.midOrder(tree.root);
         System.out.println("");
         tree.postOrder(tree.root);
+        System.out.println("");
+        tree.BFS(tree.root);
     }
 
 }
