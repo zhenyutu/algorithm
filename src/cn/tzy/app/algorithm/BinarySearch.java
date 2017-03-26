@@ -1,4 +1,4 @@
-package cn.tzy.app.algorithm.chapter1;
+package cn.tzy.app.algorithm;
 
 import java.io.File;
 import java.util.*;

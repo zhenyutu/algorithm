@@ -1,4 +1,4 @@
-package cn.tzy.app.algorithm.chapter1;
+package cn.tzy.app.algorithm;
 
 import java.util.ArrayDeque;
 import java.util.Scanner;
