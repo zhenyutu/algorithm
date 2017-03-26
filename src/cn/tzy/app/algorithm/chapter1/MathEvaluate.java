@@ -10,31 +10,31 @@ import java.util.Scanner;
 public class MathEvaluate {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayDeque<String> opsStack = new ArrayDeque();
+        String str = scanner.next();
+        ArrayDeque<Character> opsStack = new ArrayDeque();
         ArrayDeque<Double> valStack = new ArrayDeque();
-        while (scanner.hasNext()){
-            String s = scanner.next();
-            if ("(".equals(s)){}
-            else if ("+".equals(s)|"-".equals(s)|"*".equals(s)|"/".equals(s))
+        char[] arr = str.toCharArray();
+        for (char s : arr){
+            if ("(".equals(String.valueOf(s))){}
+            else if ("+".equals(String.valueOf(s))|"-".equals(String.valueOf(s))|"*".equals(String.valueOf(s))|"/".equals(String.valueOf(s)))
                 opsStack.push(s);
-            else if (")".equals(s)){
+            else if (")".equals(String.valueOf(s))){
                 Double tmp = valStack.pop();
-                String ops = opsStack.pop();
-                if (ops.equals("+"))
+                char ops = opsStack.pop();
+                if (("+").equals(String.valueOf(ops)))
                     tmp = valStack.pop() + tmp;
-                else if (ops.equals("-"))
+                else if (("-").equals(String.valueOf(ops)))
                     tmp = valStack.pop() - tmp;
-                else if (ops.equals("*"))
+                else if (("*").equals(String.valueOf(ops)))
                     tmp = valStack.pop() * tmp;
-                else if (ops.equals("/"))
+                else if (("/").equals(String.valueOf(ops)))
                     tmp = valStack.pop() / tmp;
                 valStack.push(tmp);
             }
             else
-                valStack.push(Double.parseDouble(s));
-
-            System.out.println(valStack.toString());
+                valStack.push(Double.parseDouble(String.valueOf(s)));
 
         }
+        System.out.println(valStack.pop());
     }
 }
