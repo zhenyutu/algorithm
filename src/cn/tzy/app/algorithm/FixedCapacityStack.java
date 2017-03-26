@@ -1,10 +1,12 @@
 package cn.tzy.app.algorithm;
 
+import java.util.Iterator;
+
 /**
  * Created by tuzhenyu on 17-3-26.
  * @author tuzhenyu
  */
-public class FixedCapacityStack<Item> {
+public class FixedCapacityStack<Item> implements Iterable<Item>{
     private int capacity;
     private int size;
     private Item[] stack;
@@ -37,5 +39,19 @@ public class FixedCapacityStack<Item> {
 
     public boolean isEmpty(){
         return size == 0;
+    }
+
+    public Iterator<Item> iterator(){
+        return new StackIterator();
+    }
+
+    private class StackIterator implements Iterator{
+        private int i = size;
+        public boolean hasNext(){
+            return i>0;
+        }
+        public Item next(){
+            return stack[--i];
+        }
     }
 }

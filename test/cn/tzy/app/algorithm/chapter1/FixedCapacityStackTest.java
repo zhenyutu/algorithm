@@ -9,6 +9,7 @@ import org.junit.Test;
  */
 public class FixedCapacityStackTest {
     private FixedCapacityStack<String> stack;
+
     @Test
     public void test()throws Exception{
         stack = new FixedCapacityStack<>(100);
@@ -16,9 +17,12 @@ public class FixedCapacityStackTest {
         for(String s:strs) {
             stack.push(s);
         }
+//        while (!stack.isEmpty()){
+//            System.out.println(stack.pop());
+//        }
 
-        while (!stack.isEmpty()){
-            System.out.println(stack.pop());
+        for (String str:stack){
+            System.out.println(str);
         }
     }
 }
