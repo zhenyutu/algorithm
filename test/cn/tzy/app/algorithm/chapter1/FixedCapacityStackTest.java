@@ -1,6 +1,5 @@
 package cn.tzy.app.algorithm.chapter1;
 
-import cn.tzy.app.algorithm.FixedCapacityStack;
 import org.junit.Test;
 
 /**

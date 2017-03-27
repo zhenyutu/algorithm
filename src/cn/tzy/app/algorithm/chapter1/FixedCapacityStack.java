@@ -1,4 +1,4 @@
-package cn.tzy.app.algorithm;
+package cn.tzy.app.algorithm.chapter1;
 
 import java.util.Iterator;
 
