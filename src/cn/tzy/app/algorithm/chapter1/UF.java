@@ -16,7 +16,11 @@ public class UF {
         }
     }
 
-    public void union(int p,int q){
+    /**
+     *quick-find算法的UF
+     */
+
+    public void unionQF(int p,int q){
         int pID = find(p);
         int qID = find(q);
 
@@ -29,7 +33,29 @@ public class UF {
         count--;
     }
 
-    public int find(int p){
+    /**
+     *quick-union算法的UF
+     */
+
+    public void unionQN(int p,int q){
+        int pRoot = findRoot(p);
+        int qRoot = findRoot(q);
+
+        if (pRoot == qRoot)
+            return;
+        id[pRoot] = pRoot;
+
+        count--;
+    }
+
+    private int findRoot(int p){
+        while (p!=id[p]){
+            p = id[p];
+        }
+        return p;
+    }
+
+    private int find(int p){
         return id[p];
     }
 
