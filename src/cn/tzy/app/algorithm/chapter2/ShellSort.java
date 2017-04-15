@@ -10,14 +10,14 @@ public class ShellSort {
     public static void sort(Comparable[] a){
         int N=a.length;
         for (int grep=N/2;grep>0;grep/=2){
-            for (int i=0;i<grep;i++){
-                for (int j=i+grep;j<N&&less(a[j],a[j-grep]);j+=grep){
+            for (int i=grep;i<N;i++){
+                for (int j=i;j>=grep&&less(a[j],a[j-grep]);j-=grep){
                     exch(a,j,j-grep);
-                    System.out.println(Arrays.toString(a));
                 }
             }
         }
     }
+
 
     private static boolean less(Comparable v , Comparable w){
         return v.compareTo(w)<0;
