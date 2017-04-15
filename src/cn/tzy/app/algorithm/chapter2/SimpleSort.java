@@ -6,15 +6,13 @@ import java.util.Arrays;
  * Created by tuzhenyu on 17-4-9.
  * @author tuzhenyu
  */
-public class SelectionSort {
+public class SimpleSort {
     public static void sort(Comparable[] a){
         for (int i=0;i<a.length;i++){
-            int min = i;
             for (int j=i+1;j<a.length;j++){
                 if (less(a[j],a[i]))
-                    min = j;
+                    exch(a,i,j);
             }
-            exch(a,i,min);
         }
     }
 
