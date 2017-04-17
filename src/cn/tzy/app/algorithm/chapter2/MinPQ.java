@@ -4,11 +4,11 @@ package cn.tzy.app.algorithm.chapter2;
  * Created by tuzhenyu on 17-4-16.
  * @author tuzhenyu
  */
-public class MaxPQ<T extends Comparable<T>>{
+public class MinPQ<T extends Comparable<T>> {
     private T[] pq;
     private int N = 0;
 
-    public MaxPQ(int num){
+    public MinPQ(int num){
         pq = (T[])new Comparable[num+1];
     }
 
@@ -25,17 +25,18 @@ public class MaxPQ<T extends Comparable<T>>{
         swim(N);
     }
 
-    public T delMax(){
-        T max = pq[1];
+    public T delMin(){
+        T min = pq[1];
+
         exch(pq,1,N--);
         pq[N+1] = null;
         sink(1);
 
-        return max;
+        return min;
     }
 
     private void swim(int k){
-        while (k>1&&less(pq[k/2],pq[k])){
+        while (k>1&&less(pq[k],pq[k/2])){
             exch(pq,k,k/2);
             k=k/2;
         }
@@ -44,9 +45,9 @@ public class MaxPQ<T extends Comparable<T>>{
     private void sink(int k){
         while (2*k<=N){
             int j = 2*k;
-            if (j<N&&less(pq[j],pq[j+1]))
+            if (j<N&&less(pq[j+1],pq[j]))
                 j++;
-            if (!less(pq[k],pq[j]))
+            if (!less(pq[j],pq[k]))
                 break;
             exch(pq,j,k);
             k = j;
