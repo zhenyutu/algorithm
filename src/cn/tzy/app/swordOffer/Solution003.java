@@ -5,6 +5,9 @@ package cn.tzy.app.swordOffer;
  * @author tuzhenyu
  */
 public class Solution003 {
+    /**
+     *本意使用二分查找，结果不适用
+     */
     public static boolean Find(int target, int [][] array) {
         boolean result = false;
 
@@ -35,6 +38,9 @@ public class Solution003 {
         return result;
     }
 
+    /**
+     *使用优化后的暴力搜索
+     */
     public static boolean Find2(int target, int [][] array) {
         boolean result = false;
         int columnLength = array.length;
@@ -56,10 +62,37 @@ public class Solution003 {
         return result;
     }
 
+    /**
+     *根据数组特点，从右上角开始如果小于target则下移，如果大于则左移
+     */
+    public static boolean Find3(int target, int [][] array) {
+        boolean result = false;
+        int row = 0;
+        int column;
+        if (array[0].length==0)
+            return result;
+        else
+            column = array[0].length-1;
+        while(row<array.length&&column>=0){
+            if (array[row][column]>target)
+                column--;
+            else if (array[row][column]<target)
+                row++;
+            else{
+                result = true;
+                break;
+            }
+        }
+
+
+        return result;
+    }
+
+
     public static void main(String[] args) {
-//        int[][] test = {{1,2,3},{4,5,6},{7,8,9}};
-        int[][] test = {{}};
-        int target = 6;
-        System.out.println(Find2(target,test));
+        int[][] test = {{1,2,3},{4,5,6},{7,8,9}};
+//        int[][] test = {{}};
+        int target = 10;
+        System.out.println(Find3(target,test));
     }
 }
