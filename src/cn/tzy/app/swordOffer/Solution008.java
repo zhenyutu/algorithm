@@ -42,9 +42,35 @@ public class Solution008 {
         return min;
     }
 
+    /**
+     *该题的出题本意是利用二分法查询得到旋转跳跃点
+     *起始两个指针分别指向数组的开始和结束,如果中间值大于起点则处于前面的增长数组，如果小于终点则处于后面的增长数组
+     *结束的标志是起点部分大于终点部分,终点起点之差为1
+     *138ms 4106k
+     */
+    public static int minNumberInRotateArray3(int [] array) {
+        int start = 0;
+        int end = array.length-1;
+        int mid = start;
+        while (array[start]>=array[end]){
+            if (end-start==1){
+                mid = end;
+                break;
+            }
+            mid = start+(end-start)/2;
+            if (array[mid]>=array[start])
+                start = mid;
+            if (array[mid]<=array[end])
+                end = mid;
+
+        }
+
+        return array[mid];
+    }
+
     public static void main(String[] args) {
-        int[] arr = {3,4,5,1,2};
-//        int[] arr = {1,2,3,4,5};
-        System.out.println(minNumberInRotateArray2(arr));
+//        int[] arr = {3,4,5,1,2};
+        int[] arr = {1,2,3,4,5};
+        System.out.println(minNumberInRotateArray3(arr));
     }
 }
