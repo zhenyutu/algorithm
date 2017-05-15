@@ -10,6 +10,9 @@ import java.util.ArrayList;
  * @author tuzhenyu
  */
 public class Solution026 {
+    /**
+     * 采用前序列遍历的思想,遍历二叉树中每条路径，如果符合条件则添加list，否则则回退到山谷一个节点
+     */
     private static ArrayList<ArrayList<Integer>> resultList = new ArrayList<ArrayList<Integer>>();
     private static ArrayList<Integer> list = new ArrayList<>();
 
