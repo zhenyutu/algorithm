@@ -26,6 +26,23 @@ public class GetMInStack {
         return tmp;
     }
 
+    public void push2(Integer t){
+        stackData.push(t);
+        if (stackMin.isEmpty()){
+            stackMin.push(t);
+        }else if (stackMin.peek()>t){
+            stackMin.push(t);
+        }else{
+            stackMin.push(stackMin.peek());
+        }
+    }
+
+    public Integer pop2(){
+        int tmp = stackData.pop();
+        stackMin.pop();
+        return tmp;
+    }
+
     public Integer getMin(){
         return stackMin.peek();
     }
@@ -46,6 +63,23 @@ public class GetMInStack {
         System.out.println(stack.getMin());
 
         System.out.println(stack.pop());
+        System.out.println(stack.getMin());
+
+        System.out.println("================");
+
+        stack.push2(10);
+        stack.push2(20);
+        stack.push2(4);
+        stack.push2(28);
+        stack.push2(6);
+
+        System.out.println(stack.pop2());
+        System.out.println(stack.getMin());
+
+        System.out.println(stack.pop2());
+        System.out.println(stack.getMin());
+
+        System.out.println(stack.pop2());
         System.out.println(stack.getMin());
     }
 
