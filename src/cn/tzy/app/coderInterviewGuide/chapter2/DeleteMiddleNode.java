@@ -4,23 +4,23 @@ package cn.tzy.app.coderInterviewGuide.chapter2;
  * Created by tuzhenyu on 17-7-27.
  * @author tuzhenyu
  */
-public class DeleteKNode {
-    public static void deleteSingleNodes(Node head,int k){
-        Node node1 = head;
-        Node node2 = head;
-
-        for (int i=0;i<k;i++){
-            node1 = node1.next;
+public class DeleteMiddleNode {
+    public static Node deleteMidNode(Node head){
+        if (head==null||head.next==null){
+            return head;
         }
+        if (head.next.next==null)
+            head = head.next;
+        Node pre = head;
+        Node cur = head.next.next;
 
-        while (node1.next!=null){
-            node1 = node1.next;
-            node2 = node2.next;
+        while (cur.next!=null&&cur.next.next!=null){
+            pre = pre.next;
+            cur = cur.next.next;
         }
-
-        node2.next = node2.next.next;
+        pre.next = pre.next.next;
+        return head;
     }
-
     public static void main(String[] args) {
         Node node1 = new Node(1);
         Node node2 = new Node(2);
@@ -34,7 +34,7 @@ public class DeleteKNode {
         node4.next = node5;
         Node head = node1;
 
-        deleteSingleNodes(head,3);
+        head = deleteMidNode(head);
 
         while (head!=null){
             System.out.println(head.value);
