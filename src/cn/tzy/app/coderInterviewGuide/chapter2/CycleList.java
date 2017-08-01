@@ -13,19 +13,35 @@ public class CycleList {
             last = last.next;
         }
 
-        Node cur = head;
         int count=0;
-        while (cur.next!=cur){
-
+        while (last!=head){
             if (++count==m){
-
+                System.out.print(head.value+" ");
+                last.next = head.next;
+                count = 0;
+            }else {
+                last = last.next;
             }
+            head = last.next;
         }
 
         return head;
     }
 
     public static void main(String[] args) {
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
+        Node node5 = new Node(5);
 
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node1;
+        Node head = node1;
+
+        josephusKill(head,3);
     }
 }
