@@ -7,6 +7,13 @@ import java.util.Stack;
  * @author tuzhenyu
  */
 public class ReverseKSection {
+    /**
+     * 利用栈辅助空间对链表进行部分翻转
+     * 时间复杂度为O(n),空间复杂度为O(n)
+     * @param head
+     * @param k
+     * @return
+     */
     public static Node reverse(Node head,int k){
         if (head==null||k<2)
             return null;
@@ -40,6 +47,53 @@ public class ReverseKSection {
         cur.next = right;
         return cur;
     }
+
+    /**
+     * 直接在链表上进行变换，不适用额外的空间
+     * 时间复杂度为O(n),空间复杂度为O(1)
+     * @param head
+     * @param k
+     * @return
+     */
+    public static Node reverse2(Node head,int k){
+        if (head==null||k<2)
+            return null;
+        Node cur = head;
+        Node next=null;
+        Node pre = null;
+        Node start = null;
+        int count = 0;
+        while (cur!=null){
+            next = cur.next;
+            if (count==k){
+                count = 0;
+                start = pre==null?head:pre.next;
+                head = pre==null?cur:head;
+                solve2(pre,start,cur,next);
+                pre = start;
+            }
+            cur = next;
+            count++;
+        }
+
+        return head;
+    }
+    private static void solve2(Node left,Node start,Node end,Node right){
+        Node pre = start;
+        Node cur = start.next;
+        Node next = null;
+        while (cur!=right){
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        if (left!=null){
+            left.next = end;
+        }
+        start.next = right;
+    }
+
     public static void main(String[] args) {
         Node node1 = new Node(1);
         Node node2 = new Node(2);
