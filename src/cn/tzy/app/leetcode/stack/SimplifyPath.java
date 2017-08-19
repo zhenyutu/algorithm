@@ -9,6 +9,11 @@ import java.util.Stack;
  * leetcode_71
  */
 public class SimplifyPath {
+    /**
+     * 利用栈简化路径,时间复杂度O(n),空间复杂度O(n)
+     * @param path
+     * @return
+     */
     public String simplifyPath(String path) {
         Stack<String> stack = new Stack<>();
         String result = "";
