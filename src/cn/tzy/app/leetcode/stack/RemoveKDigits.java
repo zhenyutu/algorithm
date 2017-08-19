@@ -8,6 +8,12 @@ import java.util.Stack;
  * leetcode_402
  */
 public class RemoveKDigits {
+    /**
+     * 时间复杂度O(n) 空间复杂度O(n)
+     * @param num
+     * @param k
+     * @return
+     */
     public String removeKdigits(String num, int k) {
         Stack<Character> stack = new Stack<>();
         String result = "";
