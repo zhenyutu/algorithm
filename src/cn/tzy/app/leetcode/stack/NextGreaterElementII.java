@@ -1,9 +1,6 @@
 package cn.tzy.app.leetcode.stack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by tuzhenyu on 17-8-16.
@@ -17,28 +14,24 @@ public class NextGreaterElementII {
      * @return
      */
     public int[] nextGreaterElements(int[] nums) {
-        Map<Integer,Integer> map = new HashMap<>();
-        Stack<Integer> stack = new Stack<>();
+            Stack<Integer> stack = new Stack<>();
         int n = nums.length;
         int[] result  =new int[n];
+        Arrays.fill(result,-1);
         for (int k=0;k<2*n;k++){
             int num = nums[k%n];
-            while (!stack.isEmpty()&&stack.peek()<num){
-                map.put(stack.pop(),num);
+            while (!stack.isEmpty()&& nums[stack.peek()]<num){
+                result[stack.pop()] = num;
             }
             if (k<n)
-                stack.push(num);
+                stack.push(k);
         }
-        int i = 0;
-        for (int num : nums){
-            int re = map.getOrDefault(num,-1);
-            result[i++] = re;
-        }
+
         return result;
     }
 
     public static void main(String[] args) {
-        int[] num2 = {6,5,4,3,2,1};
+        int[] num2 = {100,1,11,1,120,111,123,1,-1,-100};
         NextGreaterElementII n = new NextGreaterElementII();
         int[] result = n.nextGreaterElements(num2);
         for (int r : result){
