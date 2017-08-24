@@ -5,6 +5,7 @@ import java.util.Stack;
 /**
  * Created by tuzhenyu on 17-8-23.
  * @author tuzhenyu
+ * leetcode_394
  */
 public class DecodeString {
     public String decodeString(String s) {

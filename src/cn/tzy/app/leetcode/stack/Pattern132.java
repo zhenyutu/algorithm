@@ -5,6 +5,7 @@ import java.util.Stack;
 /**
  * Created by tuzhenyu on 17-8-23.
  * @author tuzhenyu
+ * leetcode_456
  */
 public class Pattern132 {
     public boolean find132pattern(int[] nums) {
