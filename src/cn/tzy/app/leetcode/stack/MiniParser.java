@@ -1,5 +1,7 @@
 package cn.tzy.app.leetcode.stack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -15,6 +17,9 @@ class NestedInteger{
     NestedInteger(){}
 
     public void add(NestedInteger ni){}
+    public boolean isInteger(){ return true;}
+    public Integer getInteger(){return 1;}
+    public List<NestedInteger> getList(){return new ArrayList<>();}
 }
 public class MiniParser {
     public NestedInteger deserialize(String s) {
