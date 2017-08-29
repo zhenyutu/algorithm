@@ -1,5 +1,7 @@
 package cn.tzy.app.coderInterviewGuide.chapter3;
 
+import java.util.Stack;
+
 /**
  * Created by tuzhenyu on 17-8-29.
  * @author tuzhenyu
@@ -49,14 +51,55 @@ public class BinaryTreeIterator {
      * 利用栈的特性实现二叉树的遍历
      */
     public void preOrder2(TreeNode root){
-        
+        if (root==null)
+            return;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode node  = stack.pop();
+            System.out.println(node.e);
+            if (node.rightNode!=null)
+                stack.push(node.rightNode);
+            if (node.leftNode!=null)
+                stack.push(node.leftNode);
+        }
     }
 
     public void midOrder2(TreeNode root){
-
+        if (root==null)
+            return;
+        Stack<TreeNode> stack = new Stack<>();
+        while (root!=null||!stack.isEmpty()){
+            while (root!=null){
+                stack.push(root);
+                root = root.leftNode;
+            }
+            TreeNode node = stack.pop();
+            System.out.println(node.e);
+            root = node.rightNode;
+        }
     }
 
     public void postOrder2(TreeNode root){
-
+        if (root==null)
+            return;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode lastVisit = root;
+        TreeNode node = root;
+        while (node!=null||!stack.isEmpty()){
+            while (node!=null){
+                stack.push(node);
+                node = node.leftNode;
+            }
+            node = stack.peek();
+            if (node.rightNode==null||node.rightNode==lastVisit){
+                System.out.println(node.e);
+                stack.pop();
+                lastVisit = node;
+                node = null;
+            }else {
+                node = node.rightNode;
+            }
+        }
     }
 }

@@ -79,4 +79,11 @@ public class BinaryTree<E> {
                 nodeList.offer(current.rightNode);
         }
     }
+
+    public static void main(String[] args) {
+        Integer[] arr = {1,2,3,4,5,6,7};
+        BinaryTree<Integer> tree = new BinaryTree<>(arr);
+        tree.postOrder(tree.root);
+
+    }
 }
