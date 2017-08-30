@@ -1,5 +1,7 @@
 package cn.tzy.app.coderInterviewGuide.chapter3;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -120,6 +122,21 @@ public class BinaryTreeIterator {
         while (!stack2.isEmpty()){
             TreeNode node = stack2.pop();
             System.out.println(node.e);
+        }
+    }
+
+    public void level(TreeNode root){
+        if (root==null)
+            return;
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        if (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            System.out.println(node.e);
+            if (node.leftNode!=null)
+                queue.add(node.leftNode);
+            if (node.rightNode!=null)
+                queue.add(node.rightNode);
         }
     }
 }
