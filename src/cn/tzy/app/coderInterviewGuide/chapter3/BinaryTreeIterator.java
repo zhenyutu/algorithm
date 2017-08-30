@@ -102,4 +102,24 @@ public class BinaryTreeIterator {
             }
         }
     }
+
+    public void postOrder3(TreeNode root){
+        if (root==null)
+            return;
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+        stack1.push(root);
+        while (!stack1.isEmpty()){
+            TreeNode node = stack1.pop();
+            stack2.push(node);
+            if (node.leftNode!=null)
+                stack1.push(node.rightNode);
+            if (node.rightNode!=null)
+                stack1.push(node.leftNode);
+        }
+        while (!stack2.isEmpty()){
+            TreeNode node = stack2.pop();
+            System.out.println(node.e);
+        }
+    }
 }
