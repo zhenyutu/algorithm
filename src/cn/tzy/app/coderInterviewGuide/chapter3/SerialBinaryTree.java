@@ -39,4 +39,56 @@ public class SerialBinaryTree {
 
         return node;
     }
+
+    public String serialByLevel(TreeNode root){
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        String res = root.e + "!";
+        queue.add(root);
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            if (node.leftNode!=null){
+                res += node.leftNode.e;
+                queue.add(node.leftNode);
+            }else {
+                res += "#!";
+            }
+            if (node.rightNode!=null){
+                res += node.rightNode.e;
+                queue.add(node.rightNode);
+            }else {
+                res += "#!";
+            }
+        }
+
+        return res;
+    }
+
+    public TreeNode reconLevel(String str){
+        String[] strs = str.split("!");
+        int index=0;
+        TreeNode head = generateNodeByString(strs[index++]);
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        if (head!=null){
+            queue.add(head);
+        }
+        TreeNode node = null;
+        while (!queue.isEmpty()){
+            node = queue.poll();
+            node.leftNode = generateNodeByString(strs[index++]);
+            node.rightNode = generateNodeByString(strs[index++]);
+            if (node.leftNode!=null)
+                queue.add(node.leftNode);
+            if (node.rightNode!=null)
+                queue.add(node.rightNode);
+        }
+
+        return head;
+
+    }
+
+    private TreeNode generateNodeByString(String str){
+        if ("#".equals(str))
+            return null;
+        return new TreeNode(str);
+    }
 }
