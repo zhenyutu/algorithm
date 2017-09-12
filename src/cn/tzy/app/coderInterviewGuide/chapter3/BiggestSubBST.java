@@ -1,7 +1,5 @@
 package cn.tzy.app.coderInterviewGuide.chapter3;
 
-import cn.tzy.app.leetcode.stack.TrappingRainWater;
-
 /**
  * Created by tuzhenyu on 17-9-11.
  * @author tuzhenyu
