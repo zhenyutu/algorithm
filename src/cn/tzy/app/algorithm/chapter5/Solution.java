@@ -1,5 +1,8 @@
 package cn.tzy.app.algorithm.chapter5;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -7,43 +10,42 @@ import java.util.Scanner;
  * @author tuzhenyu
  */
 public class Solution {
-    public void deserialize(){
-        Scanner scanner = new Scanner(System.in);
-        int num = scanner.nextInt();
-        String numStr = String.valueOf(num);
-        if (num<0){
-            System.out.println(numStr.length()-1);
-            System.out.print("-");
-            printAbsNum(num);
-            System.out.println();
-            System.out.print("-");
-            printReverseNum(num);
-
-        }else {
-            System.out.println(numStr.length());
-            printAbsNum(num);
-            System.out.println();
-            printReverseNum(num);
+    public char[] notice(int num,String str,int index,char[] res){
+        int start = index<2?0:index-2;
+        int end = index>num-3?num-1:index+2;
+        for (int i=start;i<=end;i++){
+            if (res[i]=='I')
+                continue;
+            if (str.charAt(i)=='c'){
+                res[i] = 'I';
+                res = notice(num,str,i,res);
+            }else {
+                res[i] = 'I';
+            }
         }
+        return res;
     }
 
-    private void printAbsNum(int num){
-        String absNumStr = String.valueOf(Math.abs(num));
-        for (int i=0;i<absNumStr.length()-1;i++){
-            System.out.print(absNumStr.charAt(i)+" ");
+    String annoncement(int numOfNeighbours,String characteristic){
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (int i=0;i<numOfNeighbours;i++){
+            if (characteristic.charAt(i)=='c'){
+                char[] r = new char[numOfNeighbours];
+                Arrays.fill(r,'U');
+                char[] tmp = notice(numOfNeighbours,characteristic,i,r);
+                arrayList.add(String.valueOf(tmp));
+            }
         }
-        System.out.print(absNumStr.charAt(absNumStr.length()-1));
-    }
-
-    private void printReverseNum(int num){
-        String absNumStr = String.valueOf(Math.abs(num));
-        for (int i=absNumStr.length()-1;i>=0;i--){
-            System.out.print(absNumStr.charAt(i));
-        }
+        Collections.sort(arrayList);
+        return arrayList.get(0);
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        solution.deserialize();
+        Solution s = new Solution();
+//        int num = 8;
+//        String str = "nnncncnn";
+        int num = 18;
+        String str = "ncncncnnncnccncnnn";
+        System.out.println(s.annoncement(num,str));
     }
 }
