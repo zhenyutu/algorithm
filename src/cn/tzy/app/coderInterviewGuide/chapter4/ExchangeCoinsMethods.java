@@ -49,9 +49,28 @@ public class ExchangeCoinsMethods {
         return res;
     }
 
+    public int exchange3(int target){
+        if (target<0)
+            return 0;
+        return getTarget3(1,target);
+    }
+
+    private int getTarget3(int index,int target){
+        int res = 0;
+        if (index>target){
+            return target==0?1:0;
+        }else {
+            for (int i=0;target-index*i>=0&&i<=2;i++){
+                res += getTarget3(index+1,target-index*i);
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         int[] coins = {5,10,25,1};
         ExchangeCoinsMethods e = new ExchangeCoinsMethods();
-        System.out.println(e.exchange2(coins,15));
+//        System.out.println(e.exchange(coins,15));
+        System.out.println(e.exchange3(10));
     }
 }
