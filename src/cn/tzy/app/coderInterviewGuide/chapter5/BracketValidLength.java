@@ -21,8 +21,27 @@ public class BracketValidLength {
         return status==0;
     }
 
+    public int maxLen(String str){
+        if (str==null||str.length()==0)
+            return 0;
+        int[] dp = new int[str.length()];
+        int max = 0;
+        int pre = 0;
+        char[] chars = str.toCharArray();
+        for (int i=1;i<chars.length;i++){
+            if (chars[i]==')'){
+                pre = i-1-dp[i-1];
+                if (pre>=0&&chars[pre]=='('){
+                    dp[i] = dp[i-1]+2+(pre>0?dp[pre-1]:0);
+                }
+            }
+            max = Math.max(dp[i],max);
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         BracketValidLength b = new BracketValidLength();
-        System.out.println(b.isValid("()()("));
+        System.out.println(b.maxLen("(())()("));
     }
 }
