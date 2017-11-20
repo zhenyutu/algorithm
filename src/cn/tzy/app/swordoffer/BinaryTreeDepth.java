@@ -1,5 +1,8 @@
 package cn.tzy.app.swordoffer;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 /**
  * Created by tuzhenyu on 17-11-20.
  * @author tuzhenyu
@@ -17,6 +20,27 @@ public class BinaryTreeDepth {
         int left = getTreeDepth(root.left,depth+1);
         int right = getTreeDepth(root.right,depth+1);
         return Math.max(left,right);
+    }
+
+    public int TreeDepth2(TreeNode root) {
+        if (root==null)
+            return 0;
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        int depth=0;
+        while (!queue.isEmpty()){
+            int size = queue.size();
+            depth++;
+            for (int i=0;i<size;i++){
+                TreeNode node = queue.poll();
+                if (node.left!=null)
+                    queue.add(node.left);
+                if (node.right!=null)
+                    queue.add(node.right);
+            }
+        }
+
+        return depth;
     }
 
     public static void main(String[] args) {
@@ -39,6 +63,6 @@ public class BinaryTreeDepth {
         node5.right=null;
 
         BinaryTreeDepth b = new BinaryTreeDepth();
-        System.out.println(b.TreeDepth(node1));
+        System.out.println(b.TreeDepth2(node1));
     }
 }

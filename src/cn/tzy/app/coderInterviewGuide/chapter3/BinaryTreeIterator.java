@@ -130,13 +130,33 @@ public class BinaryTreeIterator {
             return;
         Deque<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
-        if (!queue.isEmpty()){
+        while (!queue.isEmpty()){
             TreeNode node = queue.poll();
             System.out.println(node.e);
             if (node.leftNode!=null)
                 queue.add(node.leftNode);
             if (node.rightNode!=null)
                 queue.add(node.rightNode);
+        }
+    }
+
+    public void level2(TreeNode root){
+        if (root==null)
+            return;
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        int depth = 0;
+        while (!queue.isEmpty()){
+            int size = queue.size();
+            TreeNode node = queue.poll();
+            System.out.println("level"+depth+": ");
+            for (int i=0;i<size;i++){
+                System.out.println(node.e);
+                if (node.leftNode!=null)
+                    queue.add(node.leftNode);
+                if (node.rightNode!=null)
+                    queue.add(node.rightNode);
+            }
         }
     }
 }
