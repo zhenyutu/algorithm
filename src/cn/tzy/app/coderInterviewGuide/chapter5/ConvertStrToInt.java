@@ -4,7 +4,7 @@ package cn.tzy.app.coderInterviewGuide.chapter5;
  * Created by tuzhenyu on 17-10-1.
  * @author tuzhenyu
  */
-public class ConvertStrToInt {
+public class    ConvertStrToInt {
     public int convert(String str){
         if (str==null||"".equals(str))
             return 0;
