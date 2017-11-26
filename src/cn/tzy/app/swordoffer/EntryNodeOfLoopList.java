@@ -22,7 +22,7 @@ public class EntryNodeOfLoopList {
         fast = pHead;
         while (fast!=slow){
             fast = fast.next;
-            slow = slow.next;   
+            slow = slow.next;
         }
 
         return fast;
