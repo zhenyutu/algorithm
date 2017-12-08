@@ -18,8 +18,8 @@ public class SlideWindow {
         for (int i=0;i<num.length;i++){
             while (!max.isEmpty()&&num[max.peekLast()]<num[i])
                 max.pollLast();
-            while (!max.isEmpty()&&num[max.peekFirst()]<=num[i])
-                max.pollFirst();
+//            while (!max.isEmpty()&&num[max.peekFirst()]<=num[i])
+//                max.pollFirst();
             max.addLast(i);
             if (max.peekFirst()==i-size)
                 max.pollFirst();
