@@ -24,7 +24,7 @@ public class DeleteDuplication {
                 pre = cur;
                 cur = cur.next;
             }
-            
+
         }
 
         return first.next;
