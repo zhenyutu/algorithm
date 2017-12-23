@@ -22,7 +22,7 @@ class TreeNode<E>{
 public class BinaryTreeIterator {
     public void midOrder(TreeNode<Integer> root){
         if (root==null)
-            return; 
+            return;
         Stack<TreeNode> stack = new Stack<>();
         while (root!=null||!stack.isEmpty()){
             while (root!=null){
