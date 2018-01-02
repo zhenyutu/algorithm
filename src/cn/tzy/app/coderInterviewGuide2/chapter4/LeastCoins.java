@@ -111,11 +111,36 @@ public class LeastCoins {
         return dp[arr.length-1][arm];
     }
 
+    public int leastCoins4(int[] arr,int arm){
+        if (arr==null||arr.length==0||arm<0)
+            return -1;
+        int[][] dp = new int[arr.length][arm+1];
+
+        for (int i=0;i<arr.length;i++){
+            dp[i][0]=1;
+        }
+        for (int j=1;j*arr[0]<=arm;j++){
+            dp[0][j*arr[0]] = 1;
+        }
+        int num = 0;
+        for (int i=1;i<=arm;i++){
+            for (int j=1;j<arr.length;j++){
+                num = 0;
+                for (int k=0;i-k*arr[j]>=0;k++){
+                    num += dp[j-1][i-k*arr[j]];
+                }
+                dp[j][i] = num;
+            }
+        }
+
+        return dp[arr.length-1][arm];
+    }
+
 
     public static void main(String[] args) {
         int[] arr = new int[]{5,10,25,1};
         int res = 15;
         LeastCoins l = new LeastCoins();
-        System.out.println(l.leastCoins3(arr,res));
+        System.out.println(l.leastCoins4(arr,res));
     }
 }
