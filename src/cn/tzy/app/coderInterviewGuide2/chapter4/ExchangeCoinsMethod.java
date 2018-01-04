@@ -81,7 +81,7 @@ public class ExchangeCoinsMethod {
     }
 
     /**
-     * 动态规划
+     * 经典动态规划
      * @param arr
      * @param arm
      * @return
@@ -136,11 +136,10 @@ public class ExchangeCoinsMethod {
         return dp[arr.length-1][arm];
     }
 
-
     public static void main(String[] args) {
         int[] arr = new int[]{5,10,25,1};
         int res = 15;
         ExchangeCoinsMethod l = new ExchangeCoinsMethod();
-        System.out.println(l.exchange0(arr,res));
+        System.out.println(l.exchange4(arr,res));
     }
 }
