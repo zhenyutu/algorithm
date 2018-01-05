@@ -5,6 +5,12 @@ package cn.tzy.app.coderInterviewGuide.chapter4;
  * @author tuzhenyu
  */
 public class SameSubSeq {
+    /**
+     * 动态规划　最长公共子串
+     * @param str1
+     * @param str2
+     * @return
+     */
     public int sameSubSeq(String str1,String str2){
         if (str1==null||str2==null||str1.length()==0||str2.length()==0)
             return -1;
