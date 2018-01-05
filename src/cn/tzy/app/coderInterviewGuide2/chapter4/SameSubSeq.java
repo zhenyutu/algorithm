@@ -1,4 +1,4 @@
-package cn.tzy.app.coderInterviewGuide.chapter4;
+package cn.tzy.app.coderInterviewGuide2.chapter4;
 
 /**
  * Created by tuzhenyu on 18-1-4.
