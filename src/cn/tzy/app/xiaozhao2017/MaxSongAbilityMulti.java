@@ -1,5 +1,7 @@
 package cn.tzy.app.xiaozhao2017;
 
+import java.util.Scanner;
+
 /**
  * Created by tuzhenyu on 18-1-6.
  * @author tuzhenyu
@@ -48,7 +50,38 @@ public class MaxSongAbilityMulti {
     }
 
     public static void main(String[] args) {
-        MaxSongAbilityMulti m = new MaxSongAbilityMulti();
-        System.out.println(m.getMax(new int[]{7,4,7,2},2));
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] ab = new int[n];
+        for (int i=0;i<n;i++){
+            ab[i] = scanner.nextInt();
+        }
+        int k = scanner.nextInt();
+        int d = scanner.nextInt();
+
+        int[][] maxMulti = new int[k][n];
+        int[][] minMulti = new int[k][n];
+        maxMulti[0][0] = ab[0];
+        minMulti[0][0] = ab[0];
+        for (int i=1;i<n;i++){
+            maxMulti[0][i] = Math.max(maxMulti[0][i-1],ab[i]);
+            minMulti[0][i] = Math.min(minMulti[0][i-1],ab[i]);
+        }
+
+        for (int i=1;i<k;i++){
+            for (int j=i;j<n;j++){
+                for (int x=j-1;x>=0&&j-x<d;x--){
+                    if (ab[j]>0) {
+                        maxMulti[i][j] = Math.max(maxMulti[i][j], maxMulti[i - 1][x] * ab[j]);
+                        minMulti[i][j] = Math.max(minMulti[i][j], minMulti[i - 1][x] * ab[j]);
+                    } else{
+                        maxMulti[i][j] = Math.max(maxMulti[i][j],minMulti[i-1][x]*ab[j]);
+                        minMulti[i][j] = Math.min(minMulti[i][j],maxMulti[i-1][x]*ab[j]);
+                    }
+
+                }
+            }
+        }
+        System.out.println(maxMulti[k-1][n-1]);
     }
 }
