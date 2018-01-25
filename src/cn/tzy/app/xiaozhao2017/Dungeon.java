@@ -32,6 +32,6 @@ public class Dungeon {
         }
 
         int[][] dp = new int[x][y];
-        
+
     }
 }
