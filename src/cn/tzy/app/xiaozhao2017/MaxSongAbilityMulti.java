@@ -68,20 +68,16 @@ public class MaxSongAbilityMulti {
             minMulti[0][i] = Math.min(minMulti[0][i-1],ab[i]);
         }
 
+        long res = ab[0];
         for (int i=1;i<k;i++){
             for (int j=i;j<n;j++){
-                for (int x=j-1;x>=0&&j-x<d;x--){
-                    if (ab[j]>0) {
-                        maxMulti[i][j] = Math.max(maxMulti[i][j], maxMulti[i - 1][x] * ab[j]);
-                        minMulti[i][j] = Math.max(minMulti[i][j], minMulti[i - 1][x] * ab[j]);
-                    } else{
-                        maxMulti[i][j] = Math.max(maxMulti[i][j],minMulti[i-1][x]*ab[j]);
-                        minMulti[i][j] = Math.min(minMulti[i][j],maxMulti[i-1][x]*ab[j]);
-                    }
-
+                for (int x=j-1;x>=0&&j-x<=d;x--){
+                    maxMulti[i][j] = Math.max(maxMulti[i][j], Math.max(maxMulti[i - 1][x] * ab[j],minMulti[i - 1][x] * ab[j]));
+                    minMulti[i][j] = Math.min(minMulti[i][j], Math.min(maxMulti[i - 1][x] * ab[j],minMulti[i - 1][x] * ab[j]));
                 }
+                res = Math.max(res,maxMulti[i][j]);
             }
         }
-        System.out.println(maxMulti[k-1][n-1]);
+        System.out.println(res);
     }
 }
