@@ -21,26 +21,29 @@ public class ArrReduction {
             arr[i] = tmp;
             num[tmp] = 1;
         }
+
         List<Integer> list = new ArrayList<>();
         for (int i=1;i<=n;i++){
-            if (arr[i]==0){
+            if (num[i]==0){
                 list.add(i);
             }
         }
 
         List<List<Integer>> lists = new ArrayList<>();
-        perm(lists,list,0);
+        perm(lists,list,list.size()-1,0);
+
+        System.out.println("");
 
     }
 
-    private static void perm(List<List<Integer>> lists,List<Integer> list,int n){
-        if (n==list.size()){
+    private static void perm(List<List<Integer>> lists,List<Integer> list,int n,int k){
+        if (n==k){
             lists.add(new ArrayList<>(list));
         }else {
-            for (int i=n;n<list.size();i++){
-                Collections.swap(list,i,n);
-                perm(lists,list,n+1);
-                Collections.swap(list,i,n);
+            for (int i=k;k<=n;i++){
+                Collections.swap(list,i,k);
+                perm(lists,list,n,k+1);
+                Collections.swap(list,i,k);
             }
         }
     }
