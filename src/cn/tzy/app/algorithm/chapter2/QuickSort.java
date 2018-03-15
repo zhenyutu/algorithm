@@ -21,7 +21,7 @@ public class QuickSort {
     public static void sort(Comparable[] a,int low,int high){
         if (high<=low)
             return;
-        int j = partition(a,low,high);
+        int j = partition2(a,low,high);
         sort(a,low,j-1);
         sort(a,j+1,high);
     }
@@ -44,6 +44,18 @@ public class QuickSort {
         }
         exch(a,low,j);
         return j;
+    }
+
+    private static int partition2(Comparable[] arr,int low,int high){
+        Comparable tmp = arr[low];
+        while (low<high){
+            while (low<high&&less(arr[low],tmp))
+                low++;
+            while (low<high&&less(tmp,arr[high]))
+                high--;
+            exch(arr,low,high);
+        }
+        return low;
     }
 
     private static boolean less(Comparable v , Comparable w){

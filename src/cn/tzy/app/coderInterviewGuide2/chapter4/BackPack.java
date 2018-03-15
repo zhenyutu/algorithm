@@ -34,4 +34,24 @@ public class BackPack {
 
         return val[a.length-1][m];
     }
+
+    public int maxValue(int target,int[] m,int[] v){
+        if (target<0||m==null||v==null)
+            return -1;
+        int[][] dp = new int[m.length][target+1];
+        for (int i=1;i<=target;i++){
+            if (i>m[0]&&dp[0][i-m[0]]!=0){
+                dp[0][i] = dp[0][i-m[0]]+v[0];
+            }
+        }
+        for (int i=1;i<m.length;i++){
+            for (int j=0;i<=target;j++){
+                if (j>m[i]){
+                    dp[i][j] = Math.max(dp[i-1][j-m[i]]+v[i],dp[i-1][j]);
+                }
+            }
+        }
+
+        return dp[m.length-1][target];
+    }
 }

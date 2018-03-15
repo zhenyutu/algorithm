@@ -9,7 +9,7 @@ import java.util.Stack;
  * Created by tuzhenyu on 17-10-27.
  * @author tuzhenyu
  */
-class ListNode {
+class   ListNode {
     int val;
     ListNode next = null;
 

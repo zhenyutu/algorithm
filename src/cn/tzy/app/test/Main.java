@@ -15,7 +15,5 @@ import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
  */
 public class Main {
     public static void main(String[] args) {
-        File f = new File("");
-
     }
 }
