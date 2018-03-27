@@ -1,4 +1,4 @@
-package cn.tzy.app.xiaozhao2018;
+package cn.tzy.app.xiaozhao2018.leetcode;
 
 import java.util.HashSet;
 import java.util.Scanner;
